@@ -1246,9 +1246,7 @@ class SelectContainerComponent {
      * @return {?}
      */
     _initSelectedItemsChange() {
-        this._selectedItems$
-            .pipe(auditTime(AUDIT_TIME), takeUntil(this.destroy$))
-            .subscribe({
+        this._selectedItems$.pipe(auditTime(AUDIT_TIME), takeUntil(this.destroy$)).subscribe({
             next: (/**
              * @param {?} selectedItems
              * @return {?}
@@ -1280,7 +1278,6 @@ class SelectContainerComponent {
         ([update, selectedItems]) => {
             /** @type {?} */
             const item = update.item;
-            console.log('Updating item: ' + item + ' Update type: ' + update.type);
             switch (update.type) {
                 case UpdateActions.Add:
                     if (this._addItem(item, selectedItems)) {

@@ -1654,9 +1654,7 @@
          */
         function () {
             var _this = this;
-            this._selectedItems$
-                .pipe(operators.auditTime(AUDIT_TIME), operators.takeUntil(this.destroy$))
-                .subscribe({
+            this._selectedItems$.pipe(operators.auditTime(AUDIT_TIME), operators.takeUntil(this.destroy$)).subscribe({
                 next: (/**
                  * @param {?} selectedItems
                  * @return {?}
@@ -1694,7 +1692,6 @@
                 var _b = __read(_a, 2), update = _b[0], selectedItems = _b[1];
                 /** @type {?} */
                 var item = update.item;
-                console.log('Updating item: ' + item + ' Update type: ' + update.type);
                 switch (update.type) {
                     case UpdateActions.Add:
                         if (_this._addItem(item, selectedItems)) {
